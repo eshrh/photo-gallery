@@ -1,0 +1,20 @@
+.thumb {
+    object-fit:cover;
+}
+
+body {
+    text-align:center;
+    background-color: #FEFBEA;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+.pswp-gallery {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 3rem;
+    position: absolute;
+    float: center;
+}

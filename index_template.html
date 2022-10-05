@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>photos.esrh.me</title>
+    <script type="module">
+      import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.js';
+      import PhotoSwipeDynamicCaption from 'https://unpkg.com/photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.esm.js';
+
+      const lightbox = new PhotoSwipeLightbox({
+          zoom: false,
+          showHideAnimationType: 'fade',
+          gallery: '#gallery',
+          children: 'a',
+          pswpModule: () => import('https://unpkg.com/photoswipe'),
+      });
+      const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+          type: 'auto'
+      });
+
+      lightbox.init();
+
+    </script>
+    <link rel="stylesheet" href='photoswipe/photoswipe.css'>
+    <link rel="stylesheet" href="https://unpkg.com/photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div class="intro">
+      <h3>analog après-midi</h3>
+      <p> Currently: Pentax MZ-10, 35-80mm f/4-f/22 lens </p>
+    </div>
+    <div class="pswp-gallery" id="gallery">
+      !!REPLACE_ME!!
+    </div>
+  </body>
+</html>
