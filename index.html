@@ -13,6 +13,7 @@
           gallery: '#gallery',
           children: 'a',
           pswpModule: () => import('https://unpkg.com/photoswipe'),
+          padding: { top: 20, bottom: 40, left: 100, right: 100 }
       });
       const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
           type: 'auto'
