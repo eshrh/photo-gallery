@@ -3,7 +3,6 @@
 }
 
 body {
-    text-align:center;
     background-color: #FEFBEA;
 }
 
@@ -11,10 +10,19 @@ h3 {
     font-size: 2rem;
 }
 
-.pswp-gallery {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 3rem;
-    position: absolute;
-    float: center;
+#gallery {
+    display: inline-block;
+}
+
+.content {
+    text-align: center;
+    margin: 1rem;
+}
+
+.thumb:hover {
+    filter: brightness(80%);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
