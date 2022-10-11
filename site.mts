@@ -56,5 +56,6 @@
                        (inc ((last photos) :pid))) # last id + 1
                    (fst args)))
    (arr<- photos new-photo)
-   (file-> "./photos.json" (json-encode photos)))
+   (file-> "./photos.json" (s/>* "},{" "},\n{" (json-encode photos))))
+ (print (length photos))
  (make-site "index_template.html" (reverse photos)))
