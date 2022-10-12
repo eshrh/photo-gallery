@@ -30,3 +30,8 @@ h3 {
 footer {
     text-align: center;
 }
+
+.cap_title {
+    font-weight: bold;
+    font-size-adjust: 1.05;
+}
