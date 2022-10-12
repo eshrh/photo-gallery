@@ -1,0 +1,13 @@
+This is source code for my [[https://photos.esrh.me][photo gallery]] where I post some analog
+photographs.
+
+All the heavy lifting is done using photoswipe.
+
+Image html is generated using `site.mts`, which is written in my fork
+of [[https://janet-lang.org/][janet]], [[https://github.com/eshrh/matsurika][matsurika]]. I added the function to generate html from lisp
+s-exps to the language itself while writing this program to make it
+cuter.
+
+`site.mts` also serves as a photo importer that polls for image
+metadata and stores it into a json file when called with a file
+argument.
