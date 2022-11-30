@@ -5,6 +5,11 @@
        (map (fn [j] (zipcoll (map keyword (keys j))
                             (values j))))))
 
+(defun save-photos [p]
+  (file-> "./photos.json"
+          (s/>* "},{" "},\n{"
+                (json-encode p))))
+
 (defun construct-photo [id filename]
   (let [file (s+ "./photos/" (basename filename) ".jpg")
         filename_t (s+ "./photos_thumb/" (basename filename)
@@ -46,19 +51,38 @@
              ## (p {:class "cap_meta"} ,(photo :meta)) (br)
              (p {:class "cap_cap"} ,(photo :caption))))))
 
-(defun make-site [template-file photos]
+(defun make-site [photos]
   (file-> "index.html" (s/> "!!REPLACE_ME!!"
-                            (s-join (map html-entry photos) "\n")
-                            (file<- template-file))))
+                            (s-join (map html-entry
+                                         (reverse photos)) "\n")
+                            (file<- "index_template.html"))))
+
+(defmacro zip2 [c1 c2] ~(pairs (zipcoll ,c1 ,c2)))
+
+(defun delete-photo [id photos]
+  (def item (find (fn [el] (= (el :pid) id)) photos))
+  (let [filename (item :img)
+        thumb (item :img_t)]
+    ($ rm $filename)
+    ($ rm $thumb))
+  (var new-photos (filter (fn [el] (not (= (el :pid) id))) photos))
+  (for i 0 (length new-photos)
+       (set ((new-photos i) :pid) i))
+  (save-photos new-photos)
+  (make-site new-photos))
 
 (cli
  (var photos (get-photos))
- (unless (empty? args)
-         (def new-photo (construct-photo
-                         (if (empty? photos) 0           # start with id 0
-                             (inc ((last photos) :pid))) # last id + 1
-                         (fst args)))
-         (arr<- photos new-photo)
-         (file-> "./photos.json" (s/>* "},{" "},\n{" (json-encode photos))))
- (print (length photos))
- (make-site "index_template.html" (reverse photos)))
+ (match (map id args)
+        @["-a" file] (do
+                       (arr<- photos
+                              (construct-photo
+                               (if (empty? photos) 0
+                                   (inc ((last photos) :pid)))
+                               (fst args)))
+                       (save-photos photos)
+                       (print (length photos))
+                       (make-site photos))
+        @["-d" id] (delete-photo (s->n id) photos)
+        @["-r"] (make-site photos)
+        _ (pp "invalid")))
