@@ -79,7 +79,7 @@
                               (construct-photo
                                (if (empty? photos) 0
                                    (inc ((last photos) :pid)))
-                               (fst args)))
+                               file))
                        (save-photos photos)
                        (print (length photos))
                        (make-site photos))
