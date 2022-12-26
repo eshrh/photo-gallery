@@ -44,7 +44,7 @@
        (img {:class "thumb"
              :src ,(photo :img_t)
              :width ,crop-size
-             :height ,crop-size} nil)
+             :height ,crop-size} :noclose)
        (span {:class "pswp-caption-content"}
              (p {:class "cap_title"} ,(photo :title))
              (p {:class "cap_location"} ,(photo :loc))
