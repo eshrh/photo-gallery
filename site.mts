@@ -30,11 +30,12 @@
 
 
 (defun html-entry [photo]
-  (def crop-size (->> [:size_w :size_h]
-                      (map |(s->n (photo $)))
-                      (min-of)
-                      (* 0.2)
-                      (floor)))
+  (def crop-size 200)
+  ## (def crop-size (->> [:size_w :size_h]
+  ## (map |(s->n (photo $)))
+  ## (min-of)
+  ## (* 0.2)
+  ## (floor)))
   (html
    ~(a {:href ,(photo :img)
         :data-pswp-width ,(photo :size_w)
