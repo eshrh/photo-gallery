@@ -1,19 +1,24 @@
-(defun get-photos []
-  (->> (file<- "./photos.json")
+(defun path [album file]
+  (s+ "albums/" album "/" file))
+
+(defun get-photos [album]
+  (->> (file<- (path album "photos.json"))
        (json-decode)
        ## convert string keys to keywords.
        (map (fn [j] (zipcoll (map keyword (keys j))
                             (values j))))))
 
-(defun save-photos [p]
-  (file-> "./photos.json"
+(defun save-photos [album p]
+  (file-> (path album "photos.json")
           (s/>* "},{" "},\n{"
                 (json-encode p))))
 
-(defun construct-photo [id filename]
-  (let [file (s+ "./photos/" (basename filename) ".jpg")
-        filename_t (s+ "./photos_thumb/" (basename filename)
+(defun construct-photo [album id filename]
+  (let [file (s+ "photos/" (basename filename) ".jpg")
+        file_t (s+ "photos_thumb/" (basename filename)
                        "_t.jpg")
+        abs_file (path album file)
+        abs_file_t (path album file_t)
         [size_w size_h] (->> ($ identify $filename) (fst)
                              (peg>!* '(* (<- (some :d)) "x"
                                          (<- (some :d))))
@@ -22,20 +27,15 @@
                                              "Location:"
                                              "Metadata:"
                                              "Caption:"])]
-    ($ cp $filename $file)
-    ($ convert -scale "20%" $filename $filename_t)
-    (table :pid id :img file :img_t filename_t
+    ($ cp $filename $abs_file)
+    ($ convert -scale "20%" $filename $abs_file_t)
+    (table :pid id :img file :img_t file_t
            :size_w size_w :size_h size_h :title title
            :loc loc :meta meta :caption caption)))
 
 
 (defun html-entry [photo]
   (def crop-size 200)
-  ## (def crop-size (->> [:size_w :size_h]
-  ## (map |(s->n (photo $)))
-  ## (min-of)
-  ## (* 0.2)
-  ## (floor)))
   (html
    ~(a {:href ,(photo :img)
         :data-pswp-width ,(photo :size_w)
@@ -52,38 +52,43 @@
              ## (p {:class "cap_meta"} ,(photo :meta)) (br)
              (p {:class "cap_cap"} ,(photo :caption))))))
 
-(defun make-site [photos]
-  (file-> "index.html" (s/> "!!REPLACE_ME!!"
-                            (s-join (map html-entry
-                                         (reverse photos)) "\n")
-                            (file<- "index_template.html"))))
+(defun make-site [album photos]
+  (let [out_path (path album "index.html")
+        template (file<- "./album_template.html")]
+    (file-> out_path
+            (->> template
+                 (s/> "!!CONTENT!!"
+                      (s-join (map html-entry
+                                   (reverse photos)) "\n"))
+                 (s/> "!!ALBUM!!" album)))))
 
 (defmacro zip2 [c1 c2] ~(pairs (zipcoll ,c1 ,c2)))
 
-(defun delete-photo [id photos]
+(defun delete-photo [album id photos]
   (def item (find (fn [el] (= (el :pid) id)) photos))
-  (let [filename (item :img)
-        thumb (item :img_t)]
+  (let [filename (path album (item :img))
+        thumb (path album (item :img_t))]
     ($ rm $filename)
     ($ rm $thumb))
   (var new-photos (filter (fn [el] (not (= (el :pid) id))) photos))
   (for i 0 (length new-photos)
        (set ((new-photos i) :pid) i))
-  (save-photos new-photos)
-  (make-site new-photos))
+  (save-photos album new-photos)
+  (make-site album new-photos))
 
 (cli
- (var photos (get-photos))
- (match (map id args)
+ (var album (fst args))
+ (var photos (get-photos album))
+ (match (map id (tail args))
         @["-a" file] (do
                        (arr<- photos
-                              (construct-photo
+                              (construct-photo album
                                (if (empty? photos) 0
                                    (inc ((last photos) :pid)))
                                file))
-                       (save-photos photos)
+                       (save-photos album photos)
                        (print (length photos))
-                       (make-site photos))
-        @["-d" id] (delete-photo (s->n id) photos)
-        @["-r"] (make-site photos)
+                       (make-site album photos))
+        @["-d" id] (delete-photo album (s->n id) photos)
+        @["-r"] (make-site album photos)
         _ (pp "invalid")))

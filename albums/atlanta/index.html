@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>analog apres-midi</title>
+    <script type="module">
+      import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.js';
+      import PhotoSwipeDynamicCaption from 'https://unpkg.com/photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.esm.js';
+
+      const lightbox = new PhotoSwipeLightbox({
+          zoom: false,
+          counter: false,
+          showHideAnimationType: 'fade',
+          gallery: '#gallery',
+          children: 'a',
+          pswpModule: () => import('https://unpkg.com/photoswipe'),
+          padding: { top: 20, bottom: 20, left: 50, right: 50 }
+      });
+      const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+          type: 'auto'
+      });
+
+      lightbox.init();
+
+    </script>
+    <link rel="stylesheet" href='../../photoswipe/photoswipe.css'>
+    <link rel="stylesheet" href='../../photoswipe/photoswipe-dynamic-caption-plugin.css'>
+    <link rel="stylesheet" href="../../style.css">
+  </head>
+
+  <body>
+    <div class="content">
+    <div class="intro">
+      <h3>analog après-midi: atlanta</h3>
+    </div>
+    <div class="pswp-gallery" id="gallery">
+      
+    </div>
+    </div>
+  </body>
+  <footer>
+    <a href="https://github.com/eshrh/photo-gallery">site source</p>
+  </footer>
+</html>
