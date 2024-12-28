@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>analog apres-midi</title>
+    <script type="module">
+      import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe/dist/photoswipe-lightbox.esm.js';
+      import PhotoSwipeDynamicCaption from 'https://unpkg.com/photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.esm.js';
+
+      const lightbox = new PhotoSwipeLightbox({
+          zoom: false,
+          counter: false,
+          showHideAnimationType: 'fade',
+          gallery: '#gallery',
+          children: 'a',
+          pswpModule: () => import('https://unpkg.com/photoswipe'),
+          padding: { top: 20, bottom: 20, left: 50, right: 50 }
+      });
+      const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+          type: 'auto'
+      });
+
+      lightbox.init();
+
+    </script>
+    <link rel="stylesheet" href='../../photoswipe/photoswipe.css'>
+    <link rel="stylesheet" href='../../photoswipe/photoswipe-dynamic-caption-plugin.css'>
+    <link rel="stylesheet" href="../../style.css">
+  </head>
+
+  <body>
+    <div class="content">
+    <div class="intro">
+      <h3>analog après-midi: japan_2</h3>
+    </div>
+    <div class="pswp-gallery" id="gallery">
+      <a data-pswp-width="2137" data-cropped="true" href="photos/000039.jpg" target="_blank" data-pswp-height="1499"><img width="200" class="thumb" src="photos_thumb/000039_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">southern tip of satsuma</p><p class="cap_location">Southern tip of kaimon-dake, ibusuki</p><p class="cap_cap">Towards the end of a really cool climb down a cliff to reach a fishing/view spot (pictured). The climb is made easier by some thick ropes set up to help you down, but it's still somewhat thrilling.</p></span></a>
+<a data-pswp-width="2137" data-cropped="true" href="photos/000037.jpg" target="_blank" data-pswp-height="1499"><img width="200" class="thumb" src="photos_thumb/000037_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">大願</p><p class="cap_location">Hirakiki shrine, ibusuki, kagoshima</p><p class="cap_cap">An ema the 5 of us wrote together, hanging in the shrine.</p></span></a>
+<a data-pswp-width="1499" data-cropped="true" href="photos/000036.jpg" target="_blank" data-pswp-height="2137"><img width="200" class="thumb" src="photos_thumb/000036_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">satsuma no ichinomiya</p><p class="cap_location">hirakiki shrine, ibusuki</p><p class="cap_cap">Hirakiki and Nitta shrines both claim to be the top ranked shrine in the Satsuma province, and while I can't really comment on Nitta, Hirakiki was very cool. The scenery with Kaimon-dake in the back was really nice.</p></span></a>
+<a data-pswp-width="1499" data-cropped="true" href="photos/000033.jpg" target="_blank" data-pswp-height="2137"><img width="200" class="thumb" src="photos_thumb/000033_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">soumen</p><p class="cap_location">ibusuki, kagoshima</p><p class="cap_cap">Near the tousenkyou soumen nagashi spot. The food was unfortunately fairly mid in my opinion (so many bones in everything!), but the location and vibe is just spectacular. The fact that the restaurant is actually run by the city is also pretty peculiar. Here, a worker is preparing what seems to be bamboo tubes for the soumen to flow down (?).</p></span></a>
+<a data-pswp-width="2137" data-cropped="true" href="photos/000030.jpg" target="_blank" data-pswp-height="1499"><img width="200" class="thumb" src="photos_thumb/000030_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">kaimondake</p><p class="cap_location">ibusuki, kagoshima</p><p class="cap_cap">Mt kaimon, on the very edge of the satsuma peninsula. I visited ibusuki with some friends I met while staying in hostels, one of whom had a rental car we all used to see ibusuki with high efficiency. Ibusuki ended up being one of my favorite days of the entire kyushu trip, it was so much fun car touring the countryside with an international group of friends</p></span></a>
+<a data-pswp-width="1499" data-cropped="true" href="photos/000026.jpg" target="_blank" data-pswp-height="2137"><img width="200" class="thumb" src="photos_thumb/000026_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">Ibusuki no tamatebako</p><p class="cap_location">ibusuki, kagoshima</p><p class="cap_cap">aforementioned limited express train. The white/gold side faces the ocean, and the black side faces inland on the trip to ibusuki.</p></span></a>
+<a data-pswp-width="2137" data-cropped="true" href="photos/000021.jpg" target="_blank" data-pswp-height="1499"><img width="200" class="thumb" src="photos_thumb/000021_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">umizoi christmas train</p><p class="cap_location">kagoshima</p><p class="cap_cap">scene from inside the "ibusuki no tamatebako" limited express train from kagoshimachuou to ibusuki station. Another spectacular route along the ocean with great views of the kagoshima bay. The train was christmas themed when I went.</p></span></a>
+<a data-pswp-width="2137" data-cropped="true" href="photos/000016.jpg" target="_blank" data-pswp-height="1499"><img width="200" class="thumb" src="photos_thumb/000016_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">hazy sakurajima</p><p class="cap_location">sengan-en, kagoshima</p><p class="cap_cap">hazy outline of sakurajima in the bay as seen from sengan-en. The many views of sakurajima were some of my favorite moments of my time in kagoshima. the fact that a very active volcano is just sitting there in the middle of a huge population center and everyone's just gotten used to it is so crazy to me.</p></span></a>
+<a data-pswp-width="1499" data-cropped="true" href="photos/000014.jpg" target="_blank" data-pswp-height="2137"><img width="200" class="thumb" src="photos_thumb/000014_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">senganen</p><p class="cap_location">sengan-en, kagoshima</p><p class="cap_cap">new roll of film after i realized i underexposed the previous gold 200 roll by one stop :sob:. It turned out ok, there were some really moody shots in the last roll.</p></span></a>
+<a data-pswp-width="2137" data-cropped="true" href="photos/000044.jpg" target="_blank" data-pswp-height="1499"><img width="200" class="thumb" src="photos_thumb/000044_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">road in kagoshima</p><p class="cap_location">kagoshima</p><p class="cap_cap"></p></span></a>
+<a data-pswp-width="2137" data-cropped="true" href="photos/000043.jpg" target="_blank" data-pswp-height="1499"><img width="200" class="thumb" src="photos_thumb/000043_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">grimy tenmonkan</p><p class="cap_location">tenmonkan, kagoshima</p><p class="cap_cap">rainy day in tenmonkan. These buildings are behind the bus stop where the bus to sengan-en stops.</p></span></a>
+<a data-pswp-width="2137" data-cropped="true" href="photos/000040.jpg" target="_blank" data-pswp-height="1499"><img width="200" class="thumb" src="photos_thumb/000040_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">tenmonkan park</p><p class="cap_location">tenmonkan, kagoshima</p><p class="cap_cap">early morning. I love tenmonkan! it's completely crazy yet feels so cozy at the same time. A completely different nightlife feel compared to say, Nakasu in fukuoka.</p></span></a>
+<a data-pswp-width="2137" data-cropped="true" href="photos/000039_1.jpg" target="_blank" data-pswp-height="1499"><img width="200" class="thumb" src="photos_thumb/000039_1_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">takamori station at sunset</p><p class="cap_location"></p><p class="cap_cap">takamori station with mt aso peaks in the background. the only reason I was still in takamori by sunset is because I forgot my camera in the station... the minamiaso railway trains only run once every 2hrs so that ended up costing me 4+ hours</p></span></a>
+<a data-pswp-width="1499" data-cropped="true" href="photos/000035.jpg" target="_blank" data-pswp-height="2137"><img width="200" class="thumb" src="photos_thumb/000035_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">kamishikimi</p><p class="cap_location">kamishikimikumanoza shrine</p><p class="cap_cap">main entrance to the shrine</p></span></a>
+<a data-pswp-width="2137" data-cropped="true" href="photos/000034.jpg" target="_blank" data-pswp-height="1499"><img width="200" class="thumb" src="photos_thumb/000034_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">fall, piled up</p><p class="cap_location">kamishikimikumanoza shrine</p><p class="cap_cap">Cool shrine featured in hotarubi no mori e. unsurprisingly very heavily visited. my friend and and I climbed all the way up the hill behind the shrine and through a gnarly hiking/climbing trail (right past the do-not-enter sign)</p></span></a>
+<a data-pswp-width="2137" data-cropped="true" href="photos/000027.jpg" target="_blank" data-pswp-height="1499"><img width="200" class="thumb" src="photos_thumb/000027_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">foggy caldera</p><p class="cap_location">mt aso</p><p class="cap_cap">photo taken from the window of the minamiaso railway. easily one of the most scenic train routes I've ever taken. It starts in tateno station and takes you into the Mt. Aso caldera to Takamori station. the pictured mountains are the southern rim of the caldera.</p></span></a>
+<a data-pswp-width="2137" data-cropped="true" href="photos/000022.jpg" target="_blank" data-pswp-height="1499"><img width="200" class="thumb" src="photos_thumb/000022_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">kumamoto station</p><p class="cap_location">kumamoto</p><p class="cap_cap">early morning while the 2024 december christmas market was setup</p></span></a>
+<a data-pswp-width="2137" data-cropped="true" href="photos/000021_1.jpg" target="_blank" data-pswp-height="1499"><img width="200" class="thumb" src="photos_thumb/000021_1_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">kumamoto shiden</p><p class="cap_location">kumamoto</p><p class="cap_cap">the absolutely awful kumamoto streetcar. miserable timings and miserable riding experience... gets so intensely crowded I'd rather walk 30m.</p></span></a>
+<a data-pswp-width="2137" data-cropped="true" href="photos/000018.jpg" target="_blank" data-pswp-height="1499"><img width="200" class="thumb" src="photos_thumb/000018_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">fukuoka from the sea</p><p class="cap_location">fukuoka</p><p class="cap_cap">fukuoka tower from the ferry from uminonakamichi to hakata. taken on my december 2024 kyushu trip with my georgia tech friend sidong.</p></span></a>
+<a data-pswp-width="2137" data-cropped="true" href="photos/000007.jpg" target="_blank" data-pswp-height="1499"><img width="200" class="thumb" src="photos_thumb/000007_t.jpg" height="200"><span class="pswp-caption-content"><p class="cap_title">married rocks</p><p class="cap_location">futamigaura, fukuoka</p><p class="cap_cap">the married rocks and white torii near futamigaura. i have a bw photo of this as well, but I developed the color roll first.</p></span></a>
+    </div>
+    </div>
+  </body>
+  <footer>
+    <a href="https://github.com/eshrh/photo-gallery">site source</p>
+  </footer>
+</html>
